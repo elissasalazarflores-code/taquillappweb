@@ -111,7 +111,7 @@
       <article class="bento__card bento__card--outline reveal">
         <svg class="bento__icon"><use href="#i-shield"/></svg>
         <div><h3>Pago seguro</h3>
-        <p>Tarjeta, PayPal, SPEI o efectivo. Procesado por OpenPay y PayPal.</p></div>
+        <p>Tarjeta de crédito, débito o PayPal. Procesado por OpenPay y PayPal.</p></div>
       </article>
 
       <article class="bento__card bento__card--outline reveal">
@@ -186,7 +186,7 @@
           <small>Pago confirmado</small>
         </div>
         <h3>Paga</h3>
-        <p>Con tarjeta, PayPal, transferencia SPEI o efectivo en tienda. Pago protegido de principio a fin.</p>
+        <p>Con tarjeta de crédito, débito o PayPal. Pago protegido de principio a fin.</p>
       </li>
       <li class="step reveal">
         <span class="step__num">03</span>
@@ -245,7 +245,7 @@
       </details>
       <details class="qa">
         <summary>¿Qué métodos de pago aceptan?</summary>
-        <p>Tarjeta de crédito o débito, PayPal, transferencia SPEI y efectivo en tiendas de conveniencia.</p>
+        <p>Tarjeta de crédito o débito y PayPal.</p>
       </details>
       <details class="qa">
         <summary>¿TaquillApp es parte de los cines?</summary>

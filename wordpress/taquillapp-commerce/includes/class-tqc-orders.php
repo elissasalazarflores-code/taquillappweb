@@ -4,12 +4,11 @@
  *
  * Estados (_tq_status):
  *   pending             creado, sin pago
- *   awaiting_payment    SPEI / tienda o 3D Secure en curso
+ *   awaiting_payment    3D Secure en curso (el banco aún no confirma)
  *   paid                pagado, emitiendo códigos
  *   fulfilled           pagado y con todos los códigos emitidos
  *   fulfillment_failed  pagado, pero RedPass falló (se reintenta solo)
  *   failed              pago rechazado
- *   expired             venció la ficha SPEI / tienda
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -138,7 +137,6 @@ class TQC_Orders {
 			'customer'     => (array) get_post_meta( $id, '_tq_customer', true ),
 			'gateway'      => get_post_meta( $id, '_tq_gateway', true ),
 			'gateway_ref'  => get_post_meta( $id, '_tq_gateway_ref', true ),
-			'instructions' => get_post_meta( $id, '_tq_instructions', true ),
 			'mode'         => get_post_meta( $id, '_tq_mode', true ),
 		);
 	}
@@ -183,8 +181,6 @@ class TQC_Orders {
 		$status = $o['status'];
 		if ( self::is_paid( $status ) ) {
 			$public = 'paid';
-		} elseif ( 'awaiting_payment' === $status && ! empty( $o['instructions'] ) ) {
-			$public = 'pending';
 		} elseif ( 'awaiting_payment' === $status ) {
 			$public = 'processing'; // 3D Secure: el banco aún no confirma.
 		} elseif ( in_array( $status, array( 'failed', 'expired' ), true ) ) {
@@ -199,7 +195,6 @@ class TQC_Orders {
 			'email'        => $o['customer']['email'] ?? '',
 			'codes'        => $codes,
 			'codes_ready'  => 'fulfilled' === $status,
-			'instructions' => 'pending' === $public ? $o['instructions'] : null,
 		);
 	}
 

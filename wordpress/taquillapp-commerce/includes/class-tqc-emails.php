@@ -1,6 +1,6 @@
 <?php
 /**
- * Correos al comprador (códigos e instrucciones de pago) y alertas internas.
+ * Correos al comprador (códigos) y alertas internas.
  * Para cambiar el diseño, usa el filtro "tqc_email_html".
  */
 
@@ -39,26 +39,6 @@ class TQC_Emails {
 			. '<table style="width:100%;border-collapse:collapse">' . $rows . '</table>'
 			. '<p style="font-size:14px;color:#6b6b76;margin-top:18px">Canjea los boletos en la web o app oficial de tu cine o en taquilla. Los combos se canjean en dulcería. Revisa la vigencia y condiciones de cada producto.</p>';
 		self::send( $o['customer']['email'], 'Tus códigos de TaquillApp · Pedido #' . $id, 'Tus códigos están listos', $body );
-	}
-
-	public static function instructions( $id ) {
-		$o = TQC_Orders::get( $id );
-		if ( ! $o || empty( $o['instructions'] ) ) {
-			return;
-		}
-		$i    = $o['instructions'];
-		$row  = function ( $k, $v ) {
-			return $v ? '<tr><td style="padding:6px 0;color:#6b6b76">' . esc_html( $k ) . '</td><td style="padding:6px 0;text-align:right;font-weight:700">' . esc_html( $v ) . '</td></tr>' : '';
-		};
-		$body = '<p>Hola ' . esc_html( $o['customer']['name'] ) . ', tu pedido #' . (int) $id . ' está apartado. Completa el pago con estos datos:</p>'
-			. '<table style="width:100%;border-collapse:collapse">'
-			. $row( 'Banco', $i['bank'] ?? '' ) . $row( 'CLABE', $i['clabe'] ?? '' ) . $row( 'Referencia', $i['reference'] ?? '' )
-			. $row( 'Monto', '$' . number_format( $o['total'], 2 ) . ' MXN' ) . $row( 'Paga antes de', $i['due_date'] ?? '' )
-			. '</table>'
-			. ( ! empty( $i['receipt_url'] ) ? '<p><a href="' . esc_url( $i['receipt_url'] ) . '" style="color:#FF2D78;font-weight:700">Descargar ficha de pago</a></p>' : '' )
-			. '<p style="font-size:14px;color:#6b6b76">En cuanto se confirme tu pago te enviamos tus códigos a este correo.</p>';
-		$subject = 'spei' === ( $i['type'] ?? '' ) ? 'Datos para tu transferencia' : 'Tu ficha para pagar en tienda';
-		self::send( $o['customer']['email'], $subject . ' · Pedido #' . $id, $subject, $body );
 	}
 
 	public static function admin_alert( $id, array $errors ) {

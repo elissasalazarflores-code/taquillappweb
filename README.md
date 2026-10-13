@@ -7,7 +7,7 @@ El repositorio tiene dos versiones del mismo diseño:
 | Versión | Para qué sirve | Pagos |
 |---|---|---|
 | **Sitio estático** (`index.html`, `css/`, `js/`, `assets/`) | Vista previa pública en GitHub Pages | Demostración: no cobra |
-| **WordPress** (`wordpress/`) | Sitio real | OpenPay (tarjeta, SPEI, efectivo en tienda), PayPal y códigos oficiales vía RedPass |
+| **WordPress** (`wordpress/`) | Sitio real | Tarjeta de crédito o débito (OpenPay), PayPal y códigos oficiales vía RedPass |
 
 ```
 index.html, css/, js/, assets/      Diseño (fuente única)
@@ -57,21 +57,21 @@ Todo se configura en **Ajustes → TaquillApp**. Empieza en **Modo: Pruebas (san
 > define( 'TQC_REDPASS_API_KEY',  '...' );
 > ```
 
-### OpenPay (tarjeta, SPEI y efectivo en tienda)
+### OpenPay (tarjeta de crédito y débito)
 
 1. En el panel de OpenPay copia **ID de comercio**, **llave pública** y **llave privada** (las de sandbox para pruebas).
 2. Pégalas en **Ajustes → TaquillApp → OpenPay**.
 3. En OpenPay, **Configuración → Webhooks → Agregar**:
    - URL: la que muestra la página de ajustes (`https://TU-DOMINIO/wp-json/taquillapp/v1/webhooks/openpay`).
    - Usuario y contraseña: los mismos que pongas en "Usuario/Contraseña del webhook".
-   - Eventos: los de cargos (`charge.succeeded`, `charge.cancelled`, `charge.failed`, `charge.created`).
+   - Eventos: los de cargos (`charge.succeeded`, `charge.cancelled`, `charge.failed`).
+   - El webhook sirve para confirmar pagos con 3D Secure cuando el comprador no regresa al sitio.
    - OpenPay manda un código de verificación; aparece en la página de ajustes para copiarlo.
 4. **3D Secure**: "Según reglas de OpenPay" es lo normal; "Siempre" pide validación del banco en cada compra.
 
 Cómo funciona:
 - **Tarjeta**: los datos se convierten en un token con OpenPay.js en el navegador; nunca pasan por WordPress. El cargo se hace en el servidor y, si se aprueba, se emiten los códigos al momento. Si el banco pide 3D Secure, el comprador regresa al sitio y ve su resultado.
-- **SPEI / tienda**: se genera una CLABE o referencia (con ficha PDF para tienda), se muestra en pantalla y se manda por correo. Cuando el comprador paga, el webhook confirma y se emiten los códigos. Las fichas vencen a las 48 h (configurable).
-- El webhook nunca se cree a ciegas: el plugin vuelve a consultar el cargo en OpenPay antes de marcar el pedido como pagado. Además, cada 15 minutos revisa los pagos pendientes por si un webhook no llegó.
+- El webhook nunca se cree a ciegas: el plugin vuelve a consultar el cargo en OpenPay antes de marcar el pedido como pagado. Además, cada 15 minutos revisa los pagos con 3D Secure pendientes por si un webhook no llegó.
 
 ### PayPal
 

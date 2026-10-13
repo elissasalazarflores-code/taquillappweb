@@ -111,52 +111,7 @@ class TQC_OpenPay {
 		return self::request( 'POST', '/charges', $body );
 	}
 
-	/** Ficha SPEI (CLABE). */
-	public static function charge_spei( array $o ) {
-		return self::request( 'POST', '/charges', self::base_charge( $o ) + array( 'method' => 'bank_account', 'due_date' => self::due_date() ) );
-	}
-
-	/** Referencia para pago en tienda (Paynet). */
-	public static function charge_store( array $o ) {
-		return self::request( 'POST', '/charges', self::base_charge( $o ) + array( 'method' => 'store', 'due_date' => self::due_date() ) );
-	}
-
 	public static function get_charge( $id ) {
 		return self::request( 'GET', '/charges/' . rawurlencode( $id ) );
-	}
-
-	private static function due_date() {
-		$hours = max( 1, (int) TQC_Settings::get( 'offline_hours' ) );
-		return gmdate( 'Y-m-d\TH:i:s', time() + $hours * HOUR_IN_SECONDS );
-	}
-
-	/** Datos para que el comprador pague por SPEI o en tienda. */
-	public static function instructions( array $charge ) {
-		$pm = $charge['payment_method'] ?? array();
-		if ( 'bank_transfer' === ( $pm['type'] ?? '' ) ) {
-			return array(
-				'type'      => 'spei',
-				'bank'      => $pm['bank'] ?? '',
-				'clabe'     => $pm['clabe'] ?? '',
-				'reference' => $pm['name'] ?? '',
-				'amount'    => (float) ( $charge['amount'] ?? 0 ),
-				'due_date'  => self::format_date( $charge['due_date'] ?? '' ),
-			);
-		}
-		$dashboard = TQC_Settings::is_sandbox() ? 'https://sandbox-dashboard.openpay.mx' : 'https://dashboard.openpay.mx';
-		$reference = $pm['reference'] ?? '';
-		return array(
-			'type'        => 'store',
-			'reference'   => $reference,
-			'barcode_url' => $pm['barcode_url'] ?? '',
-			'receipt_url' => $reference ? sprintf( '%s/paynet-pdf/%s/%s', $dashboard, rawurlencode( TQC_Settings::get( 'openpay_merchant_id' ) ), rawurlencode( $reference ) ) : '',
-			'amount'      => (float) ( $charge['amount'] ?? 0 ),
-			'due_date'    => self::format_date( $charge['due_date'] ?? '' ),
-		);
-	}
-
-	private static function format_date( $iso ) {
-		$ts = $iso ? strtotime( $iso ) : false;
-		return $ts ? wp_date( 'j \d\e F, H:i \h', $ts ) : '';
 	}
 }

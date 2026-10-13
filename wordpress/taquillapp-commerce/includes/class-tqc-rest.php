@@ -129,25 +129,15 @@ class TQC_Rest {
 			return $t;
 		}
 
-		$method = sanitize_key( (string) $r->get_param( 'method' ) );
-		switch ( $method ) {
-			case 'card':
-				$token  = sanitize_text_field( (string) $r->get_param( 'token_id' ) );
-				$device = sanitize_text_field( (string) $r->get_param( 'device_session_id' ) );
-				if ( ! $token || ! $device ) {
-					return self::error( 'tq_card', 'No pudimos validar tu tarjeta. Intenta de nuevo.' );
-				}
-				$charge = TQC_OpenPay::charge_card( $o, $token, $device );
-				break;
-			case 'spei':
-				$charge = TQC_OpenPay::charge_spei( $o );
-				break;
-			case 'store':
-				$charge = TQC_OpenPay::charge_store( $o );
-				break;
-			default:
-				return self::error( 'tq_method', 'Método de pago no válido.' );
+		if ( 'card' !== sanitize_key( (string) $r->get_param( 'method' ) ) ) {
+			return self::error( 'tq_method', 'Método de pago no válido.' );
 		}
+		$token  = sanitize_text_field( (string) $r->get_param( 'token_id' ) );
+		$device = sanitize_text_field( (string) $r->get_param( 'device_session_id' ) );
+		if ( ! $token || ! $device ) {
+			return self::error( 'tq_card', 'No pudimos validar tu tarjeta. Intenta de nuevo.' );
+		}
+		$charge = TQC_OpenPay::charge_card( $o, $token, $device );
 
 		if ( is_wp_error( $charge ) ) {
 			TQC_Orders::log( $o['id'], 'OpenPay rechazó el cargo: ' . $charge->get_error_message() );
@@ -158,29 +148,20 @@ class TQC_Rest {
 		$status = $charge['status'] ?? '';
 
 		// Tarjeta aprobada al instante.
-		if ( 'card' === $method && 'completed' === $status ) {
+		if ( 'completed' === $status ) {
 			TQC_Orders::mark_paid( $o['id'], 'Tarjeta aprobada (' . ( $charge['authorization'] ?? '' ) . ').' );
 			return rest_ensure_response( self::paid_response( $o['id'] ) );
 		}
 
 		// Tarjeta que requiere 3D Secure: el banco valida y OpenPay regresa al sitio.
 		$redirect = $charge['payment_method']['url'] ?? '';
-		if ( 'card' === $method && $redirect ) {
+		if ( $redirect ) {
 			TQC_Orders::set_status( $o['id'], 'awaiting_payment', 'Esperando 3D Secure.' );
 			return rest_ensure_response( array( 'status' => 'redirect', 'redirect_url' => esc_url_raw( $redirect ) ) );
 		}
 
-		if ( 'card' === $method ) {
-			TQC_Orders::set_status( $o['id'], 'failed', 'Estado OpenPay: ' . $status );
-			return self::error( 'tq_card_declined', 'No pudimos procesar el pago. Intenta de nuevo o usa otro método.', 402 );
-		}
-
-		// SPEI o tienda: se entregan instrucciones y se espera el webhook.
-		$instructions = TQC_OpenPay::instructions( $charge );
-		update_post_meta( $o['id'], '_tq_instructions', $instructions );
-		TQC_Orders::set_status( $o['id'], 'awaiting_payment', 'SPEI' === strtoupper( $method ) ? 'Ficha SPEI generada.' : 'Referencia de tienda generada.' );
-		TQC_Emails::instructions( $o['id'] );
-		return rest_ensure_response( TQC_Orders::public_view( TQC_Orders::get( $o['id'] ) ) );
+		TQC_Orders::set_status( $o['id'], 'failed', 'Estado OpenPay: ' . $status );
+		return self::error( 'tq_card_declined', 'No pudimos procesar el pago. Intenta de nuevo o usa otro método.', 402 );
 	}
 
 	/**

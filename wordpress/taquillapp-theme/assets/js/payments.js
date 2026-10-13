@@ -83,15 +83,13 @@ window.TQPayments = (() => {
     return api('/orders', { items, customer });
   }
 
-  // 2a) Tarjeta / SPEI / tienda vía OpenPay.
-  async function payOpenPay(order, method, card) {
-    if (!live) return demoResult(method);
-    const body = { order_key: order.order_key, method };
-    if (method === 'card') {
-      if (!(await initOpenPay())) throw new Error('El pago con tarjeta aún no está configurado.');
-      body.token_id = await tokenizeCard(card);
-      body.device_session_id = deviceSessionId;
-    }
+  // 2a) Tarjeta vía OpenPay.
+  async function payOpenPay(order, card) {
+    if (!live) return demoResult();
+    const body = { order_key: order.order_key, method: 'card' };
+    if (!(await initOpenPay())) throw new Error('El pago con tarjeta aún no está configurado.');
+    body.token_id = await tokenizeCard(card);
+    body.device_session_id = deviceSessionId;
     const r = await api(`/orders/${order.order_id}/pay/openpay`, body);
     if (r.status === 'redirect' && r.redirect_url) { location.href = r.redirect_url; return new Promise(() => {}); }
     return r;
@@ -102,7 +100,7 @@ window.TQPayments = (() => {
     container.innerHTML = '';
     if (!live) {
       container.innerHTML = '<button type="button" class="paypal-demo">PayPal</button>';
-      container.firstChild.addEventListener('click', () => onDone(demoResult('paypal')));
+      container.firstChild.addEventListener('click', async () => onDone(await demoResult()));
       return;
     }
     if (!CFG.paypal || !CFG.paypal.clientId) { container.innerHTML = '<p class="paynote">PayPal aún no está configurado.</p>'; return; }
@@ -129,12 +127,8 @@ window.TQPayments = (() => {
 
   /* ---------------- Demo ---------------- */
   const demoCode = () => 'TQ-' + Array.from({ length: 8 }, () => 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[Math.random() * 31 | 0]).join('').replace(/(.{4})/, '$1-');
-  function demoResult(method) {
-    return new Promise(resolve => setTimeout(() => {
-      if (method === 'spei') return resolve({ status: 'pending', instructions: { type: 'spei', bank: 'STP', clabe: '646180157000000004', reference: 'TQ' + Date.now().toString().slice(-8), due_date: null } });
-      if (method === 'store') return resolve({ status: 'pending', instructions: { type: 'store', reference: '1010' + Date.now().toString().slice(-10), receipt_url: null, due_date: null } });
-      resolve({ status: 'paid', demo: true });
-    }, 1200));
+  function demoResult() {
+    return new Promise(resolve => setTimeout(() => resolve({ status: 'paid', demo: true }), 1200));
   }
 
   return { live, createOrder, payOpenPay, mountPayPal, getOrderStatus, initOpenPay, demoCode };

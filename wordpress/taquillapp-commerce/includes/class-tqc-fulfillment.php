@@ -6,7 +6,7 @@
  *   reintento nunca duplica códigos ya emitidos.
  * - Un candado evita que el webhook y la respuesta directa emitan al mismo tiempo.
  * - Cada 15 minutos el cron reintenta pedidos pagados sin códigos y revisa con
- *   OpenPay los pagos SPEI/tienda pendientes (por si un webhook no llegó).
+ *   OpenPay los pagos con 3D Secure pendientes (por si un webhook no llegó).
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -122,7 +122,7 @@ class TQC_Fulfillment {
 			self::fulfill( $id );
 		}
 
-		// 2) Revisar con OpenPay los pagos pendientes (SPEI, tienda, 3D Secure).
+		// 2) Revisar con OpenPay los pagos con 3D Secure pendientes.
 		if ( ! TQC_OpenPay::is_configured() ) {
 			return;
 		}

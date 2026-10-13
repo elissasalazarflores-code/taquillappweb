@@ -320,10 +320,10 @@
     showError('');
     const label = $('#coPay').textContent;
     try {
-      const card = method === 'card' ? readCard() : null;
+      const card = readCard();
       busy(true, 'Procesando…');
       const o = await ensureOrder();
-      finish(await Pay.payOpenPay(o, method, card));
+      finish(await Pay.payOpenPay(o, card));
     } catch (err) {
       showError(err.message);
     } finally {
@@ -331,30 +331,16 @@
     }
   });
 
-  const row = (k, v) => v ? `<div><span>${k}</span><b>${esc(v)}</b></div>` : '';
   function finish(result) {
-    const badge = $('#doneBadge');
-    badge.classList.toggle('is-pending', result.status === 'pending');
     $('#doneCodes').innerHTML = '';
     const email = esc(buyer.email || result.email || '');
-
-    if (result.status === 'pending') {
-      const i = result.instructions || {};
-      $('#doneTitle').textContent = i.type === 'spei' ? 'Tu pedido está apartado. Falta la transferencia.' : 'Tu pedido está apartado. Falta el pago en tienda.';
-      $('#doneMsg').innerHTML = `También te enviamos estas instrucciones a ${email}. Tus códigos llegan en cuanto se confirme el pago.`;
-      $('#doneCodes').innerHTML = `<div class="instructions">
-        ${row('Banco', i.bank)}${row('CLABE', i.clabe)}${row('Referencia', i.reference)}${row('Monto', i.amount != null ? money(i.amount) : money(cartTotal()))}${row('Paga antes de', i.due_date)}
-        ${i.receipt_url ? `<a href="${esc(i.receipt_url)}" target="_blank" rel="noopener">Descargar ficha de pago</a>` : ''}
-      </div>`;
-    } else {
-      $('#doneTitle').textContent = '¡Listo! Tus códigos van en camino.';
-      let codes = result.codes || [];
-      if (result.demo) codes = Object.entries(cart).flatMap(([id, q]) => Array.from({ length: q }, () => ({ product: byId(id).name, chain: CHAINS[byId(id).chain], code: Pay.demoCode() })));
-      $('#doneMsg').innerHTML = codes.length
-        ? `Enviamos tus códigos a ${email}. También los ves aquí:`
-        : `Pago confirmado. Estamos generando tus códigos oficiales y te llegarán a ${email} en unos minutos.`;
-      $('#doneCodes').innerHTML = codes.map(c => `<div class="done__code"><small>${esc(c.product)}${c.chain ? ' · ' + esc(c.chain) : ''}</small><b>${esc(c.code)}</b></div>`).join('');
-    }
+    $('#doneTitle').textContent = '¡Listo! Tus códigos van en camino.';
+    let codes = result.codes || [];
+    if (result.demo) codes = Object.entries(cart).flatMap(([id, q]) => Array.from({ length: q }, () => ({ product: byId(id).name, chain: CHAINS[byId(id).chain], code: Pay.demoCode() })));
+    $('#doneMsg').innerHTML = codes.length
+      ? `Enviamos tus códigos a ${email}. También los ves aquí:`
+      : `Pago confirmado. Estamos generando tus códigos oficiales y te llegarán a ${email} en unos minutos.`;
+    $('#doneCodes').innerHTML = codes.map(c => `<div class="done__code"><small>${esc(c.product)}${c.chain ? ' · ' + esc(c.chain) : ''}</small><b>${esc(c.code)}</b></div>`).join('');
     cart = {}; store.set(cart); renderCart();
     order = null; orderSig = '';
     if (!coModal.open) coModal.showModal();
@@ -368,7 +354,7 @@
     history.replaceState(null, '', location.pathname + location.hash);
     try {
       const r = await Pay.getOrderStatus(q.get('tq_order'), q.get('tq_key'));
-      if (r.status === 'paid' || r.status === 'pending') finish(r);
+      if (r.status === 'paid') finish(r);
       else if (r.status === 'processing') toast('Tu banco está confirmando el pago. Te enviaremos tus códigos por correo.');
       else toast('El pago no se completó. Puedes intentarlo de nuevo.');
     } catch (err) { toast(err.message); }

@@ -91,8 +91,6 @@
         <div class="paymethods" role="radiogroup" aria-label="Método de pago">
           <label class="paym"><input type="radio" name="method" value="card" checked><span><b>Tarjeta</b><small>Crédito o débito</small></span></label>
           <label class="paym"><input type="radio" name="method" value="paypal"><span><b>PayPal</b><small>Tu cuenta PayPal</small></span></label>
-          <label class="paym"><input type="radio" name="method" value="spei"><span><b>SPEI</b><small>Transferencia</small></span></label>
-          <label class="paym"><input type="radio" name="method" value="store"><span><b>Efectivo</b><small>En tienda</small></span></label>
         </div>
 
         <!-- Tarjeta: los datos se tokenizan con OpenPay.js en el navegador; nunca llegan al servidor. -->
@@ -109,12 +107,6 @@
         <div class="paybox" data-method="paypal" hidden>
           <p class="paynote">Paga con tu saldo o tarjetas guardadas en PayPal. Al aprobar el pago, tus códigos se generan al instante.</p>
           <div id="paypalButtons" class="paypal-slot"></div>
-        </div>
-        <div class="paybox" data-method="spei" hidden>
-          <p class="paynote">Al confirmar te damos una CLABE única para transferir desde tu banca en línea. Tus códigos se envían en cuanto se refleje el pago.</p>
-        </div>
-        <div class="paybox" data-method="store" hidden>
-          <p class="paynote">Generamos una referencia para pagar en efectivo en tiendas de conveniencia participantes. Tus códigos se envían al confirmarse el pago.</p>
         </div>
         <p class="co__error" id="coError" role="alert" hidden></p>
         <div class="co__actions">

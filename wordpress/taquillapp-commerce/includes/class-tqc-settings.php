@@ -21,7 +21,6 @@ class TQC_Settings {
 				'fields' => array(
 					'mode'            => array( 'label' => 'Modo', 'type' => 'select', 'options' => array( 'sandbox' => 'Pruebas (sandbox)', 'live' => 'Producción' ), 'default' => 'sandbox' ),
 					'notify_email'    => array( 'label' => 'Correo para alertas', 'type' => 'email', 'help' => 'Recibe avisos cuando falle la emisión de códigos.' ),
-					'offline_hours'   => array( 'label' => 'Horas para pagar SPEI / tienda', 'type' => 'number', 'default' => 48 ),
 				),
 			),
 			'openpay' => array(
