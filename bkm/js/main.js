@@ -44,26 +44,7 @@
         });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(function (s) { if (s) navIO.observe(s); });
-  }
-
-  /* ---------- Count-up ---------- */
-  function countUp(el) {
-    var target = parseFloat(el.getAttribute('data-count'));
-    var prefix = el.getAttribute('data-prefix') || '';
-    var suffix = el.getAttribute('data-suffix') || '';
-    if (reduceMotion || isNaN(target)) return;
-    var start = null;
-    var duration = 1800;
-    function frame(t) {
-      if (!start) start = t;
-      var p = Math.min((t - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - p, 4);
-      el.textContent = prefix + Math.round(target * eased) + suffix;
-      if (p < 1) requestAnimationFrame(frame);
-    }
-    el.textContent = prefix + '0' + suffix;
-    requestAnimationFrame(frame);
+    sections.concat(document.getElementById('top')).forEach(function (s) { if (s) navIO.observe(s); });
   }
 
   /* ---------- Reveal on scroll ---------- */
@@ -86,49 +67,8 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     Array.prototype.forEach.call(reveals, function (el) { io.observe(el); });
 
-    var countIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        countUp(entry.target);
-        countIO.unobserve(entry.target);
-      });
-    }, { threshold: 0.6 });
-    Array.prototype.forEach.call(document.querySelectorAll('[data-count]'), function (el) { countIO.observe(el); });
-
-    var crew = document.querySelector('.crew');
-    if (crew) {
-      new IntersectionObserver(function (entries, obs) {
-        if (entries[0].isIntersecting) { crew.classList.add('is-in'); obs.disconnect(); }
-      }, { threshold: 0.4 }).observe(crew);
-    }
   } else {
     Array.prototype.forEach.call(reveals, function (el) { el.classList.add('is-in'); });
-    var crewEl = document.querySelector('.crew');
-    if (crewEl) crewEl.classList.add('is-in');
-  }
-
-  /* ---------- Timeline ---------- */
-  var tl = document.getElementById('timeline');
-  var bar = document.getElementById('tl-progress');
-  if (tl) {
-    var step = function () {
-      var card = tl.querySelector('.tl');
-      return card ? card.getBoundingClientRect().width + 18 : 300;
-    };
-    document.querySelectorAll('.tl-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        tl.scrollBy({ left: step() * Number(btn.getAttribute('data-dir')), behavior: reduceMotion ? 'auto' : 'smooth' });
-      });
-    });
-    var updateBar = function () {
-      var max = tl.scrollWidth - tl.clientWidth;
-      var visible = tl.clientWidth / tl.scrollWidth;
-      bar.style.width = (visible * 100) + '%';
-      bar.style.left = (max > 0 ? (tl.scrollLeft / max) * (1 - visible) * 100 : 0) + '%';
-    };
-    tl.addEventListener('scroll', updateBar, { passive: true });
-    window.addEventListener('resize', updateBar);
-    updateBar();
   }
 
   /* ---------- Hero video: pause when off-screen / reduced motion ---------- */
