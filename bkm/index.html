@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BKM · Business Key Medical</title>
+  <meta name="description" content="BKM – Business Key Medical is Mexico's healthcare technology execution platform. We integrate capital, market access and operations to deliver medical technology projects end to end.">
+  <meta name="theme-color" content="#0B0B0F">
+  <link rel="icon" type="image/svg+xml" href="assets/bkm-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ============ SVG SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-gold-a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F4E39C"/><stop offset=".22" stop-color="#E6C01F"/><stop offset=".52" stop-color="#C69C1C"/><stop offset="1" stop-color="#9A6D19"/>
+    </linearGradient>
+    <linearGradient id="g-gold-b" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E2CA2B"/><stop offset=".55" stop-color="#C29D26"/><stop offset="1" stop-color="#A47422"/>
+    </linearGradient>
+  </defs>
+  <symbol id="mark" viewBox="518 273 170 221">
+    <path fill="url(#g-gold-a)" d="M519.34 275.04L609.65 451.02L560.48 453.11L528.49 492.46L685.79 492.4L581.19 309.7L621.72 309.49L603.07 332.36L620.71 363.02L686.2 274.98Z"/>
+    <path fill="url(#g-gold-b)" d="M519.34 292.19L519.42 492.46L580.79 413.68L564.42 382.3L550.1 402.18L550.08 352.83Z"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-diag" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  <!-- line icons, 48px grid -->
+  <symbol id="i-network" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="10" r="4"/><circle cx="9" cy="36" r="4"/><circle cx="39" cy="36" r="4"/><circle cx="24" cy="27" r="5"/><path d="M24 14v8M20 30l-8 4M28 30l8 4"/></g></symbol>
+  <symbol id="i-capital" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 40h36"/><path d="M10 40V24h6v16M21 40V16h6v24M32 40V8h6v32"/><path d="M8 18l10-8 8 5L40 4" stroke-linecap="round"/></g></symbol>
+  <symbol id="i-gear" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="24" r="6"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M9.9 9.9l4.2 4.2M33.9 33.9l4.2 4.2M9.9 38.1l4.2-4.2M33.9 14.1l4.2-4.2"/><circle cx="24" cy="24" r="13"/></g></symbol>
+  <symbol id="i-maze" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="6" width="36" height="36"/><path d="M6 18h14M28 6v14h8M14 30h20M14 30v12M34 30v-4M24 30v-6h-8"/></g></symbol>
+  <symbol id="i-risk" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 5L44 41H4z" stroke-linejoin="round"/><path d="M24 18v11M24 33v2" stroke-linecap="round"/></g></symbol>
+  <symbol id="i-doc" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4h18l8 8v32H12z"/><path d="M30 4v8h8M18 22h14M18 28h14M18 34h8"/></g></symbol>
+  <symbol id="i-wrench" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M30 6a10 10 0 0 0-9 14L6 35l7 7 15-15a10 10 0 0 0 14-9l-6 4-6-2-2-6z" stroke-linejoin="round"/></g></symbol>
+  <symbol id="i-route" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="38" r="4"/><circle cx="38" cy="10" r="4"/><path d="M14 38h14a6 6 0 0 0 0-12H20a6 6 0 0 1 0-12h14" stroke-dasharray="3 3"/></g></symbol>
+  <symbol id="i-star" viewBox="0 0 48 48"><path d="M24 4l5 14h15l-12 9 5 15-13-9-13 9 5-15L4 18h15z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="24" r="19"/><path d="M5 24h38M24 5c6 6 8 12 8 19s-2 13-8 19c-6-6-8-12-8-19s2-13 8-19z"/></g></symbol>
+  <symbol id="i-shield" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 4l16 6v12c0 10-7 18-16 22C15 40 8 32 8 22V10z"/><path d="M17 24l5 5 9-10" stroke-linecap="round" stroke-linejoin="round"/></g></symbol>
+  <symbol id="i-handshake" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 16l8-4 10 4 6-3 8 3 8 4"/><path d="M4 16v14l6 2M44 20v12l-8 2"/><path d="M22 16l-6 6a3 3 0 0 0 4 4l6-4 10 10a2.5 2.5 0 0 1-4 3M30 35a2.5 2.5 0 0 1-4 3l-3-3M23 38a2.5 2.5 0 0 1-4 2l-6-6"/></g></symbol>
+  <symbol id="i-key" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="15" cy="24" r="9"/><path d="M24 24h20M36 24v7M42 24v5"/></g></symbol>
+  <symbol id="i-pulse" viewBox="0 0 48 48"><path d="M4 26h9l4-10 6 20 6-16 4 6h11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14"/><path d="M3 6l9 7 9-7"/></g></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 22s7-7 7-12a7 7 0 0 0-14 0c0 5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></g></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75V21h-4z"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a class="brand" href="#top" aria-label="BKM – Business Key Medical, home">
+      <svg class="brand__mark" aria-hidden="true"><use href="#mark"/></svg>
+      <span class="brand__text">
+        <strong>BKM</strong>
+        <small>Business Key Medical</small>
+      </span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#platform">Platform</a>
+      <a href="#services">Services</a>
+      <a href="#track-record">Track Record</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn--outline nav__cta" href="#contact">Let's talk <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero__media" aria-hidden="true">
+    <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg">
+      <source src="assets/offices.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="hero__bands" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <div class="container hero__content">
+    <p class="eyebrow reveal">Healthcare Technology Execution Platform</p>
+    <h1 class="hero__title reveal">
+      <span class="line">We make</span>
+      <span class="line gold-text">health projects</span>
+      <span class="line">happen.</span>
+    </h1>
+    <p class="hero__lead reveal">Mexico's medical technology project operator. We bring together capital, regulatory access, technical teams and market knowledge to turn healthcare opportunities into fully executed projects.</p>
+    <div class="hero__ctas reveal">
+      <a class="btn btn--gold" href="#platform">Explore the platform <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--ghost" href="#contact">Contact us</a>
+    </div>
+  </div>
+
+  <div class="hero__stats container" aria-label="BKM in numbers">
+    <div class="stat"><b data-count="15" data-suffix="+">15+</b><span>Years in Mexico's<br>health sector</span></div>
+    <div class="stat"><b data-count="374" data-prefix="$" data-suffix="M">$374M</b><span>USD in projects<br>executed</span></div>
+    <div class="stat"><b data-count="41">41</b><span>Specialized<br>professionals</span></div>
+    <div class="stat"><b data-count="3" data-suffix="x–4x">3x–4x</b><span>Faster project<br>commercialization</span></div>
+  </div>
+
+  <a class="hero__scroll" href="#about" aria-label="Scroll to About"><span>Scroll</span><i></i></a>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about">
+  <div class="container about__grid">
+    <div class="about__media reveal">
+      <figure class="frame">
+        <img src="assets/office-lounge.jpg" alt="BKM offices in Mexico City: lounge with navy walls and gold-inlaid carpet" loading="lazy" width="1600" height="900">
+      </figure>
+      <div class="about__badge">
+        <svg aria-hidden="true"><use href="#mark"/></svg>
+        <p><strong>Your business key</strong> in Mexico</p>
+      </div>
+      <span class="corner corner--tl" aria-hidden="true"></span>
+      <span class="corner corner--br" aria-hidden="true"></span>
+    </div>
+
+    <div class="about__copy">
+      <p class="eyebrow reveal"><span class="num">01</span> Who we are</p>
+      <h2 class="h2 reveal">The comprehensive <em>orchestrator</em> of healthcare projects</h2>
+      <p class="reveal">BKM is a group of healthcare professionals and companies specialized in the health sector, covering our clients' needs in medical equipment, medical devices, supplies and eHealth solutions.</p>
+      <p class="reveal">We connect capital, operational knowledge and supply chain to transform opportunities into executed health projects, delivering with operational excellence, commitment and patient impact, and enabling business conditions that create a prosperous ecosystem for every stakeholder.</p>
+      <blockquote class="statement reveal">
+        <p>We are not distributors. We are not consultants.<br><span class="gold-text">We are the vehicle that makes health projects happen.</span></p>
+      </blockquote>
+    </div>
+  </div>
+
+  <div class="container mv">
+    <article class="mv__card reveal">
+      <span class="mv__label">Mission</span>
+      <p>We are the strategic partner that integrates intelligent financing, specialized operation and supply chain to deliver healthcare projects end to end, with predictability and control.</p>
+    </article>
+    <article class="mv__card reveal">
+      <span class="mv__label">Vision</span>
+      <p>To become the most relevant healthcare execution platform in Latin America, with an ecosystem that generates real impact, recurring revenue and sustainable value for all participants.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ CHALLENGE ============ -->
+<section class="section challenge" id="challenge">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="eyebrow"><span class="num">02</span> The problem we solve</p>
+      <h2 class="h2">Mexico's healthcare market is complex. <em>We make it executable.</em></h2>
+    </header>
+    <div class="challenge__grid">
+      <article class="ch reveal">
+        <svg class="ch__icon" aria-hidden="true"><use href="#i-maze"/></svg>
+        <h3>Fragmented access</h3>
+        <p>A complex institutional system with multiple public and private actors operating without integration.</p>
+      </article>
+      <article class="ch reveal">
+        <svg class="ch__icon" aria-hidden="true"><use href="#i-risk"/></svg>
+        <h3>Financial risk</h3>
+        <p>Unpredictable collections and prolonged payment cycles that affect cash flow.</p>
+      </article>
+      <article class="ch reveal">
+        <svg class="ch__icon" aria-hidden="true"><use href="#i-doc"/></svg>
+        <h3>Regulatory processes</h3>
+        <p>Certifications, permits and approvals that require in-depth local expertise.</p>
+      </article>
+      <article class="ch reveal">
+        <svg class="ch__icon" aria-hidden="true"><use href="#i-wrench"/></svg>
+        <h3>After-sales support</h3>
+        <p>Lack of technical follow-up, maintenance and clinical support after installation.</p>
+      </article>
+      <article class="ch reveal">
+        <svg class="ch__icon" aria-hidden="true"><use href="#i-route"/></svg>
+        <h3>Inconsistent distribution</h3>
+        <p>Traditional channels lacking technical capabilities and effective territorial coverage.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATFORM ============ -->
+<section class="section platform" id="platform">
+  <div class="platform__bg" aria-hidden="true"></div>
+  <div class="container">
+    <header class="section__head section__head--center reveal">
+      <p class="eyebrow"><span class="num">03</span> How we operate</p>
+      <h2 class="h2">Three engines. <em>One platform.</em></h2>
+      <p class="section__lead">BKM operates through a structured execution platform that aligns capital, commercial deployment and operational control to ensure predictable healthcare delivery. Most projects activate more than one engine at once: Trade opens the door, Engine Capital fuels it, and the Operating Model keeps it running.</p>
+    </header>
+
+    <div class="engines">
+      <article class="engine reveal">
+        <div class="engine__top">
+          <span class="engine__num">01</span>
+          <svg class="engine__icon" aria-hidden="true"><use href="#i-network"/></svg>
+        </div>
+        <p class="engine__tag">Enables access</p>
+        <h3 class="engine__name">BKM Trade</h3>
+        <p class="engine__sub">Strategic Procurement &amp; Market Access Infrastructure</p>
+        <p>Drives healthcare projects through strategic sourcing, procurement coordination, regulatory alignment and market access, connecting manufacturers, suppliers and healthcare institutions within a structured ecosystem.</p>
+        <ul class="ticks">
+          <li>Exclusive distribution of national and international medical brands</li>
+          <li>Global sourcing with active supplier accreditation</li>
+          <li>Regulatory compliance and framework for entering the Mexican market</li>
+          <li>Panel of sector experts in each project</li>
+        </ul>
+      </article>
+
+      <article class="engine engine--featured reveal">
+        <div class="engine__top">
+          <span class="engine__num">02</span>
+          <svg class="engine__icon" aria-hidden="true"><use href="#i-capital"/></svg>
+        </div>
+        <p class="engine__tag">Enables capital</p>
+        <h3 class="engine__name">BKM Engine Capital</h3>
+        <p class="engine__sub">Healthcare Financial Coordination Infrastructure</p>
+        <p>Financial solutions designed for healthcare environments, accelerating projects by aligning capital deployment with operational timelines, procurement cycles and execution requirements.</p>
+        <ul class="ticks">
+          <li>Structured financing for equipment, deployment and implementation</li>
+          <li>Own capital and coordination of external sources, according to each project</li>
+          <li>Risk assessment with criteria specific to the health sector</li>
+          <li>Accelerates commercialization 3x–4x versus conventional channels</li>
+        </ul>
+      </article>
+
+      <article class="engine reveal">
+        <div class="engine__top">
+          <span class="engine__num">03</span>
+          <svg class="engine__icon" aria-hidden="true"><use href="#i-gear"/></svg>
+        </div>
+        <p class="engine__tag">Sustains execution</p>
+        <h3 class="engine__name">BKM Operating Model</h3>
+        <p class="engine__sub">Integrated Healthcare Execution Platform</p>
+        <p>Coordinates the operational deployment, implementation, monitoring and long-term continuity of healthcare infrastructure and services, transforming structured opportunities into fully operational healthcare environments.</p>
+        <ul class="ticks">
+          <li>Comprehensive project management from start to finish</li>
+          <li>Supply chain control with continuous operational monitoring</li>
+          <li>Product-as-a-Service and SaaS models for recurring revenue</li>
+          <li>Turnkey delivery and operational follow-up</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="hybrid reveal">
+      <div class="hybrid__copy">
+        <p class="eyebrow">The hybrid model</p>
+        <p class="hybrid__title">We finance <span class="gold-text">+</span> execute.</p>
+        <p>Ensuring delivery, predictability and risk mitigation. Capital is deployed into execution, not speculation.</p>
+      </div>
+      <ul class="hybrid__words" aria-label="Model attributes">
+        <li>Hybrid</li><li>Reproducible</li><li>Predictable</li><li>Scalable</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD (SPACTM) ============ -->
+<section class="section method" id="method">
+  <div class="container">
+    <header class="section__head method__head reveal">
+      <div>
+        <p class="eyebrow"><span class="num">04</span> The method behind every project</p>
+        <h2 class="h2">We don't improvise. <em>We follow a method.</em></h2>
+      </div>
+      <p class="section__lead">Every opportunity is approached with the same framework, project after project. That is what makes the model reproducible.</p>
+    </header>
+
+    <ol class="steps">
+      <li class="step reveal"><span class="step__letter">S</span><h3>Situation</h3><p>Understand the client's real context: what they have, what they need and where they stand.</p></li>
+      <li class="step reveal"><span class="step__letter">P</span><h3>Problem</h3><p>Pin down the specific problem keeping the project from moving forward today.</p></li>
+      <li class="step reveal"><span class="step__letter">A</span><h3>Access</h3><p>Assess access requirements: regulatory, technical and commercial.</p></li>
+      <li class="step reveal"><span class="step__letter">C</span><h3>Capital</h3><p>Determine whether there is a capital gap and how it gets covered.</p></li>
+      <li class="step reveal"><span class="step__letter">T</span><h3>Timing</h3><p>Align deployment with the project's procurement and execution cycles.</p></li>
+      <li class="step reveal"><span class="step__letter">M</span><h3>Model</h3><p>Structure the delivery and continuity model that sustains the result.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section services" id="services">
+  <div class="container services__grid">
+    <div class="services__intro">
+      <p class="eyebrow reveal"><span class="num">05</span> What we deliver</p>
+      <h2 class="h2 reveal">Brand integration <em>models</em></h2>
+      <p class="reveal">BKM manages clinical, operational and commercial execution within the healthcare system, with flexible structures that adapt to the strategic objectives of each brand.</p>
+      <figure class="frame frame--tall reveal">
+        <img src="assets/office-executive.jpg" alt="Executive office at BKM headquarters with wood shelving and warm lighting" loading="lazy" width="1600" height="900">
+      </figure>
+      <div class="pills reveal" aria-label="Portfolio integration models">
+        <span>Strategic Distribution</span>
+        <span>Product as a Service (PaaS)</span>
+        <span>Turnkey Projects</span>
+        <span>Hybrid Models</span>
+        <span>Recurring Services</span>
+      </div>
+    </div>
+
+    <ul class="svc-list">
+      <li class="svc reveal">
+        <span class="svc__num">01</span>
+        <svg class="svc__icon" aria-hidden="true"><use href="#i-star"/></svg>
+        <div><h3>Exclusive Brand Distribution</h3><p>Distributing selected medical technology brands nationwide.</p></div>
+      </li>
+      <li class="svc reveal">
+        <span class="svc__num">02</span>
+        <svg class="svc__icon" aria-hidden="true"><use href="#i-globe"/></svg>
+        <div><h3>Market Access Platform</h3><p>Providing solutions for international manufacturers entering Mexico, with active accreditations and institutional track record.</p></div>
+      </li>
+      <li class="svc reveal">
+        <span class="svc__num">03</span>
+        <svg class="svc__icon" aria-hidden="true"><use href="#i-shield"/></svg>
+        <div><h3>Regulatory &amp; Market Development</h3><p>Ensuring compliance and market entry in Mexico: COFEPRIS registrations, tender regulations, import standards and quality certifications.</p></div>
+      </li>
+      <li class="svc reveal">
+        <span class="svc__num">04</span>
+        <svg class="svc__icon" aria-hidden="true"><use href="#i-handshake"/></svg>
+        <div><h3>Financing &amp; Strategic Execution Partnership</h3><p>Securing funding and alliances for healthcare projects, from working capital to full project financing structures.</p></div>
+      </li>
+      <li class="svc reveal">
+        <span class="svc__num">05</span>
+        <svg class="svc__icon" aria-hidden="true"><use href="#i-key"/></svg>
+        <div><h3>Turnkey Project</h3><p>Delivering end-to-end project management: equipment arrives working, with trained staff and regulatory documentation in order.</p></div>
+      </li>
+      <li class="svc reveal">
+        <span class="svc__num">06</span>
+        <svg class="svc__icon" aria-hidden="true"><use href="#i-wrench"/></svg>
+        <div><h3>Maintenance Services &amp; Technical Support</h3><p>Preventive and corrective maintenance and specialized support for medical technology, with contractual response times.</p></div>
+      </li>
+      <li class="svc reveal">
+        <span class="svc__num">07</span>
+        <svg class="svc__icon" aria-hidden="true"><use href="#i-pulse"/></svg>
+        <div><h3>Digital Health &amp; eHealth</h3><p>Designing and deploying digital health solutions: electronic health records, telemedicine, remote monitoring and clinical analytics.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ TRACK RECORD ============ -->
+<section class="section track" id="track-record">
+  <div class="container">
+    <header class="section__head section__head--split reveal">
+      <div>
+        <p class="eyebrow"><span class="num">06</span> Track record</p>
+        <h2 class="h2">Experience proven <em>in the field</em></h2>
+      </div>
+      <p class="section__lead">This isn't a startup team. Our partners have already executed over $374 million USD in real-world healthcare projects with Mexico's leading public institutions.</p>
+    </header>
+
+    <div class="kpis reveal">
+      <div class="kpi"><b data-count="15" data-suffix="+">15+</b><span>Years of experience</span></div>
+      <div class="kpi"><b data-count="374" data-prefix="$" data-suffix="M">$374M</b><span>USD executed</span></div>
+      <div class="kpi"><b data-count="100" data-suffix="%">100%</b><span>Revenue visibility</span></div>
+      <div class="kpi"><b data-count="30" data-suffix="+">30+</b><span>Years of collective leadership experience</span></div>
+    </div>
+
+    <div class="timeline-wrap reveal">
+      <div class="timeline__controls">
+        <p class="timeline__label">Corporate milestones</p>
+        <div>
+          <button class="tl-btn" data-dir="-1" aria-label="Previous milestones"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+          <button class="tl-btn" data-dir="1" aria-label="Next milestones"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+      <ol class="timeline" id="timeline" tabindex="0" aria-label="Milestones timeline, scroll horizontally">
+        <li class="tl"><span class="tl__year">2010</span><h3>SEDENA Imaging</h3><p>Nationwide imaging service for the Mexican Army. Recurring.</p><b>$18M USD / yr</b></li>
+        <li class="tl"><span class="tl__year">2014</span><h3>Minimally Invasive Surgery</h3><p>Comprehensive minimally invasive surgical service nationwide. Recurring.</p><b>$12.2M USD / yr</b></li>
+        <li class="tl"><span class="tl__year">2018</span><h3>Respiratory Therapy</h3><p>Comprehensive respiratory therapy service at Star Médica. Recurring.</p><b>$2.6M USD / yr</b></li>
+        <li class="tl"><span class="tl__year">2019</span><h3>ISSSTE Integration</h3><p>Consulting and portfolio integration for equipment acquisitions at ISSSTE hospitals.</p><b>$29M USD</b></li>
+        <li class="tl"><span class="tl__year">2020</span><h3>ICU Ventilators</h3><p>Over 1,500 ICU ventilators supplied nationwide between 2020 and 2024.</p><b>$59M USD</b></li>
+        <li class="tl"><span class="tl__year">2021</span><h3>Mobile X-Ray Units</h3><p>Sale of 180 mobile X-ray units, plus a comprehensive digitization service for IMSS in Monterrey.</p><b>$30M USD</b></li>
+        <li class="tl"><span class="tl__year">2023</span><h3>Morelos Hospital</h3><p>Hospital construction in Morelos, with medical equipment integration.</p><b>$40M USD</b></li>
+        <li class="tl"><span class="tl__year">2023</span><h3>IMSS Electrosurgery &amp; Anesthesia</h3><p>Electrosurgery units for IMSS Central and anesthesia machines for IMSS.</p><b>$14M USD</b></li>
+        <li class="tl"><span class="tl__year">2024</span><h3>IMSS Policies</h3><p>Multi-year management of centralized policies for IMSS.</p><b>$30M USD</b></li>
+        <li class="tl"><span class="tl__year">2025</span><h3>OPD Oaxaca &amp; IMSS Bienestar</h3><p>Supply chain enablement for outsourced services, and a comprehensive transplant service at IMSS Bienestar.</p><b>$4.5M USD</b></li>
+      </ol>
+      <div class="timeline__bar" aria-hidden="true"><i id="tl-progress"></i></div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-label="Institutions we have served">
+    <div class="marquee__track">
+      <span>IMSS</span><i></i><span>ISSSTE</span><i></i><span>SEDENA</span><i></i><span>SEMAR</span><i></i><span>IMSS Bienestar</span><i></i><span>INSABI</span><i></i><span>Star Médica</span><i></i><span>OPD Oaxaca</span><i></i>
+      <span aria-hidden="true">IMSS</span><i></i><span aria-hidden="true">ISSSTE</span><i></i><span aria-hidden="true">SEDENA</span><i></i><span aria-hidden="true">SEMAR</span><i></i><span aria-hidden="true">IMSS Bienestar</span><i></i><span aria-hidden="true">INSABI</span><i></i><span aria-hidden="true">Star Médica</span><i></i><span aria-hidden="true">OPD Oaxaca</span><i></i>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GROUP ============ -->
+<section class="section group" id="group">
+  <div class="container">
+    <header class="section__head section__head--center reveal">
+      <p class="eyebrow"><span class="num">07</span> Our ecosystem</p>
+      <h2 class="h2">BKM Group: <em>one point of contact</em>, an entire ecosystem behind it</h2>
+      <p class="section__lead">Three accredited entities under one group, delivering specialized expertise and comprehensive coverage across the medical equipment market.</p>
+    </header>
+
+    <div class="allies">
+      <article class="ally reveal">
+        <p class="ally__name">Norcare</p>
+        <p class="ally__inst">SEDENA · ISSSTE · IMSS</p>
+        <ul><li>Radiology Systems</li><li>OR Equipment</li></ul>
+      </article>
+      <article class="ally reveal">
+        <p class="ally__name">Rookdev</p>
+        <p class="ally__inst">ISSSTE · IMSS · SEDENA</p>
+        <ul><li>Radiology Systems</li><li>Monitoring Systems</li></ul>
+      </article>
+      <article class="ally reveal">
+        <p class="ally__name">Integra IQ</p>
+        <p class="ally__inst">ISSSTE</p>
+        <ul><li>Product as a Service</li><li>Radiology Systems</li><li>Life Support Systems</li></ul>
+      </article>
+    </div>
+
+    <div class="radiology reveal">
+      <div class="radiology__copy">
+        <p class="eyebrow">Where we are going</p>
+        <h3 class="h3">Driving growth in <span class="gold-text">radiology</span></h3>
+        <p>Our objective portfolio focuses on imaging technology for public and private hospitals across Mexico.</p>
+      </div>
+      <ul class="radiology__list">
+        <li><svg aria-hidden="true"><use href="#i-plus"/></svg>Mobile X-Ray System</li>
+        <li><svg aria-hidden="true"><use href="#i-plus"/></svg>Fixed X-Ray System</li>
+        <li><svg aria-hidden="true"><use href="#i-plus"/></svg>Remote-Controlled RF System</li>
+        <li><svg aria-hidden="true"><use href="#i-plus"/></svg>C-Arm System</li>
+        <li><svg aria-hidden="true"><use href="#i-plus"/></svg>Digital Mammography System</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="section team" id="team">
+  <div class="container">
+    <header class="section__head section__head--split reveal">
+      <div>
+        <p class="eyebrow"><span class="num">08</span> Founding &amp; management team</p>
+        <h2 class="h2">Leadership with <em>real execution</em></h2>
+      </div>
+      <p class="section__lead">Over 30 years of collective experience in healthcare, engineering, finance and operations.</p>
+    </header>
+
+    <div class="leaders">
+      <article class="leader reveal"><span class="leader__mono" aria-hidden="true">EA</span><h3>Edgar Ayala</h3><p class="leader__role">CEO · Co-Founder</p><p>Commercial leadership in ISSSTE, IMSS and SEDENA. Group strategy and expansion.</p></article>
+      <article class="leader reveal"><span class="leader__mono" aria-hidden="true">VH</span><h3>Víctor Hidalgo</h3><p class="leader__role">CCO · Co-Founder</p><p>SEDENA Imaging (15 years) and Star Médica Respiratory Therapy. Institutional relations.</p></article>
+      <article class="leader reveal"><span class="leader__mono" aria-hidden="true">AR</span><h3>Abraham Rodríguez</h3><p class="leader__role">CTO · Board</p><p>Morelos Hospital and minimally invasive surgery. Infrastructure and technology.</p></article>
+      <article class="leader reveal"><span class="leader__mono" aria-hidden="true">AF</span><h3>Andrés Fregoso</h3><p class="leader__role">CFO · Board</p><p>Financial structuring, capital management and portfolio risk control.</p></article>
+      <article class="leader reveal"><span class="leader__mono" aria-hidden="true">EO</span><h3>Elizabeth Ortiz</h3><p class="leader__role">CG · Board</p><p>Corporate governance, legal compliance and the group's regulatory framework.</p></article>
+      <article class="leader reveal"><span class="leader__mono" aria-hidden="true">MB</span><h3>Marco Benítez</h3><p class="leader__role">VC · Board</p><p>Venture capital, portfolio expansion and strategic business intelligence.</p></article>
+    </div>
+
+    <div class="crew reveal">
+      <div class="crew__total"><b data-count="41">41</b><span>professionals</span></div>
+      <p class="crew__text">An agile, specialized structure that ensures accuracy and accountability at every stage of the project.</p>
+      <ul class="crew__bars">
+        <li><span>Operations &amp; Support</span><b>30</b><i style="--w:73%"></i></li>
+        <li><span>Technical Support &amp; Service</span><b>6</b><i style="--w:15%"></i></li>
+        <li><span>Sales &amp; Marketing</span><b>5</b><i style="--w:12%"></i></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HUB ============ -->
+<section class="section hub" id="hub">
+  <div class="container hub__grid">
+    <div class="hub__copy">
+      <p class="eyebrow reveal"><span class="num">09</span> Where we are located</p>
+      <h2 class="h2 reveal">Mexico City, <em>our operating hub</em></h2>
+      <ul class="hub__list">
+        <li class="reveal"><span>01</span>Strategic hub for healthcare and medical regulation (COFEPRIS)</li>
+        <li class="reveal"><span>02</span>Strong presence in the public and private hospital sector</li>
+        <li class="reveal"><span>03</span>Established operational and supplier network</li>
+      </ul>
+    </div>
+    <div class="gallery reveal">
+      <figure class="gallery__a frame"><img src="assets/office-workspace.jpg" alt="Open workspace at BKM offices" loading="lazy" width="1600" height="900"></figure>
+      <figure class="gallery__b frame"><img src="assets/office-corridor.jpg" alt="Corridor with navy arch and glass offices" loading="lazy" width="1600" height="900"></figure>
+      <figure class="gallery__c frame"><img src="assets/office-hospitality.jpg" alt="Hospitality bar area at BKM offices" loading="lazy" width="1600" height="900"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact">
+  <div class="contact__bands" aria-hidden="true"><i></i><i></i></div>
+  <div class="container contact__grid">
+    <div class="contact__copy">
+      <p class="eyebrow reveal"><span class="num">10</span> Contact</p>
+      <h2 class="h2 reveal">Let's turn your next opportunity into an <em>executed project</em></h2>
+      <p class="reveal">Healthcare institutions, international manufacturers and strategic partners: tell us about your project and our team will get back to you.</p>
+      <ul class="contact__list reveal">
+        <li><svg aria-hidden="true"><use href="#i-mail"/></svg><div><small>Email</small><a href="mailto:contact@bkm.com.mx">contact@bkm.com.mx</a></div></li>
+        <li><svg aria-hidden="true"><use href="#i-phone"/></svg><div><small>Phone</small><a href="tel:+525597674208">(+52) 55 9767 4208</a></div></li>
+        <li><svg aria-hidden="true"><use href="#i-pin"/></svg><div><small>Office</small><span>Av. Marina Nacional 385, Verónica Anzures,<br>Miguel Hidalgo, Mexico City</span></div></li>
+        <li><svg aria-hidden="true"><use href="#i-clock"/></svg><div><small>Office hours</small><span>Monday to Friday, 9:00 – 18:00</span></div></li>
+      </ul>
+    </div>
+
+    <form class="form reveal" id="contact-form" novalidate>
+      <p class="form__title">Start a conversation</p>
+      <div class="form__row">
+        <label class="field"><span>Full name</span><input name="name" type="text" autocomplete="name" required></label>
+        <label class="field"><span>Organization</span><input name="company" type="text" autocomplete="organization"></label>
+      </div>
+      <div class="form__row">
+        <label class="field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+        <label class="field"><span>Phone</span><input name="phone" type="tel" autocomplete="tel"></label>
+      </div>
+      <label class="field"><span>I am a…</span>
+        <select name="profile">
+          <option>Healthcare institution</option>
+          <option>International manufacturer</option>
+          <option>Strategic partner / allied company</option>
+          <option>Investor</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label class="field"><span>Tell us about your project</span><textarea name="message" rows="4" required></textarea></label>
+      <button class="btn btn--gold btn--block" type="submit">Send message <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      <p class="form__note" id="form-note" role="status">Your message opens in your email app, addressed to contact@bkm.com.mx.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer__top">
+    <a class="brand brand--lg" href="#top" aria-label="BKM – Business Key Medical, back to top">
+      <svg class="brand__mark" aria-hidden="true"><use href="#mark"/></svg>
+      <span class="brand__text"><strong>BKM</strong><small>Business Key Medical</small></span>
+    </a>
+    <p class="footer__tag">Your business key in Mexico</p>
+    <nav class="footer__nav" aria-label="Footer">
+      <a href="#about">About</a><a href="#platform">Platform</a><a href="#services">Services</a><a href="#track-record">Track Record</a><a href="#team">Team</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="footer__social" href="https://www.linkedin.com/search/results/all/?keywords=BKM%20Business%20Key%20Medical" target="_blank" rel="noopener" aria-label="BKM on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+  </div>
+  <div class="container footer__bottom">
+    <p>© <span id="year">2026</span> BKM – Business Key Medical, S.A.P.I. de C.V. All rights reserved.</p>
+    <p>Healthcare Technology Execution Platform · Mexico City</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
