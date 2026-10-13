@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TaquillApp · Cine con hasta 60% OFF</title>
-  <meta name="description" content="Compra boletos, combos y paquetes de Cinépolis y Cinemex con hasta 60% de descuento. Recibe tu código al instante y canjéalo en taquilla.">
+  <title>TaquillApp · Más de 50% de descuento en cine</title>
+  <meta name="description" content="Compra boletos, combos y paquetes de Cinépolis y Cinemex con más de 50% de descuento en las mejores salas. Recibe tu código al instante y vive mejor tu experiencia en el cine.">
   <meta name="theme-color" content="#0D0F1C">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -88,16 +88,16 @@
         <span class="grad-text">Ve más cine.</span>
       </h1>
       <p class="hero__lead reveal">
-        Boletos, combos y paquetes con <strong>hasta 60% OFF</strong>.
-        Eliges, pagas y tu código llega en segundos. Así de simple.
+        <strong>Más de 50% de descuento</strong> en las mejores salas,
+        para que vivas mejor tu experiencia en el cine. Eliges, pagas y tu código llega en segundos.
       </p>
       <div class="hero__ctas reveal">
         <a href="#catalogo" class="btn btn--grad">Comprar ahora <svg><use href="#i-arrow"/></svg></a>
         <a href="#como-funciona" class="btn btn--ghost">Cómo funciona</a>
       </div>
       <ul class="hero__stats reveal">
-        <li><b data-count="60">0</b><span>% OFF máximo</span></li>
-        <li><b data-count="20">0</b><span>productos activos</span></li>
+        <li><b>+<span data-count="50">0</span>%</b><span>de descuento</span></li>
+        <li><b data-count="20" id="statProducts">0</b><span>productos activos</span></li>
         <li><b>3</b><span>pasos y listo</span></li>
       </ul>
     </div>
@@ -124,7 +124,7 @@
         </div>
         <div class="tk__barcode"></div>
       </div>
-      <div class="chip chip--off">−60%</div>
+      <div class="chip chip--off">+50% OFF</div>
       <div class="chip chip--ok"><svg><use href="#i-check"/></svg> Código enviado</div>
       <div class="chip chip--time"><svg><use href="#i-bolt"/></svg> en 8 segundos</div>
     </div>
@@ -134,8 +134,8 @@
 <!-- ============ MARQUEE ============ -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">
-    <span>Boletos 2D</span><i></i><span>Combos de dulcería</span><i></i><span>Salas VIP</span><i></i><span>Platino</span><i></i><span>3D</span><i></i><span>IMAX · 4DX</span><i></i><span>Paquetes para dos</span><i></i><span>Hasta 60% OFF</span><i></i>
-    <span>Boletos 2D</span><i></i><span>Combos de dulcería</span><i></i><span>Salas VIP</span><i></i><span>Platino</span><i></i><span>3D</span><i></i><span>IMAX · 4DX</span><i></i><span>Paquetes para dos</span><i></i><span>Hasta 60% OFF</span><i></i>
+    <span>Boletos 2D</span><i></i><span>Combos de dulcería</span><i></i><span>Salas VIP</span><i></i><span>Platino</span><i></i><span>3D</span><i></i><span>IMAX · 4DX</span><i></i><span>Paquetes para dos</span><i></i><span>Más de 50% OFF</span><i></i>
+    <span>Boletos 2D</span><i></i><span>Combos de dulcería</span><i></i><span>Salas VIP</span><i></i><span>Platino</span><i></i><span>3D</span><i></i><span>IMAX · 4DX</span><i></i><span>Paquetes para dos</span><i></i><span>Más de 50% OFF</span><i></i>
   </div>
 </div>
 
@@ -154,9 +154,9 @@
     <div class="bento">
       <article class="bento__card bento__card--feature reveal">
         <span class="tag">Ahorro real</span>
-        <div class="bento__big"><span class="grad-text">60%</span></div>
-        <h3>Hasta 60% menos que en taquilla</h3>
-        <p>Precios preferenciales en boletos, combos y paquetes de las cadenas más grandes del país.</p>
+        <div class="bento__big"><span class="grad-text">+50%</span></div>
+        <h3>Más de 50% de descuento en las mejores salas</h3>
+        <p>VIP, Platino, IMAX, 4DX y más, a un precio que te deja vivir mejor tu experiencia en el cine.</p>
         <a href="#catalogo" class="round-link" aria-label="Ver catálogo"><svg><use href="#i-arrow"/></svg></a>
       </article>
 
@@ -178,13 +178,13 @@
       <article class="bento__card bento__card--outline reveal">
         <svg class="bento__icon"><use href="#i-shield"/></svg>
         <div><h3>Pago seguro</h3>
-        <p>Tarjeta, transferencia o efectivo. Tus datos viajan cifrados.</p></div>
+        <p>Tarjeta, PayPal, SPEI o efectivo. Procesado por OpenPay y PayPal.</p></div>
       </article>
 
       <article class="bento__card bento__card--outline reveal">
         <svg class="bento__icon"><use href="#i-mail"/></svg>
         <div><h3>Código al instante</h3>
-        <p>Llega a tu correo y queda guardado en tu cuenta para cuando lo necesites.</p></div>
+        <p>Llega a tu correo en segundos, listo para canjear en tu cine.</p></div>
       </article>
     </div>
   </div>
@@ -253,7 +253,7 @@
           <small>Pago confirmado</small>
         </div>
         <h3>Paga</h3>
-        <p>Con tarjeta, transferencia SPEI o efectivo en tienda. Pago protegido de principio a fin.</p>
+        <p>Con tarjeta, PayPal, transferencia SPEI o efectivo en tienda. Pago protegido de principio a fin.</p>
       </li>
       <li class="step reveal">
         <span class="step__num">03</span>
@@ -261,7 +261,7 @@
           <b>TQ-4HF2-8PL</b>
         </div>
         <h3>Canjea</h3>
-        <p>Recibe tu código y úsalo en la web o app de tu cine, en taquilla o en dulcería.</p>
+        <p>Recibe tu código oficial del cine y úsalo en su web o app, en taquilla o en dulcería.</p>
       </li>
     </ol>
   </div>
@@ -296,7 +296,7 @@
     <div class="faq__list" id="faqList">
       <details class="qa" open>
         <summary>¿Cómo recibo mi código?</summary>
-        <p>En cuanto se confirma tu pago, te enviamos el código al correo que registraste. También queda guardado en tu cuenta.</p>
+        <p>En cuanto se confirma tu pago, te enviamos el código oficial del cine al correo que registraste y también lo ves en pantalla.</p>
       </details>
       <details class="qa">
         <summary>¿Dónde lo canjeo?</summary>
@@ -312,7 +312,7 @@
       </details>
       <details class="qa">
         <summary>¿Qué métodos de pago aceptan?</summary>
-        <p>Tarjeta de crédito o débito, transferencia SPEI y efectivo en tiendas de conveniencia.</p>
+        <p>Tarjeta de crédito o débito, PayPal, transferencia SPEI y efectivo en tiendas de conveniencia.</p>
       </details>
       <details class="qa">
         <summary>¿TaquillApp es parte de los cines?</summary>
@@ -426,24 +426,35 @@
 
       <form class="co__panel" id="coStep2" novalidate>
         <h3>Elige cómo pagar</h3>
-        <div class="paymethods" role="radiogroup">
+        <div class="paymethods" role="radiogroup" aria-label="Método de pago">
           <label class="paym"><input type="radio" name="method" value="card" checked><span><b>Tarjeta</b><small>Crédito o débito</small></span></label>
+          <label class="paym"><input type="radio" name="method" value="paypal"><span><b>PayPal</b><small>Tu cuenta PayPal</small></span></label>
           <label class="paym"><input type="radio" name="method" value="spei"><span><b>SPEI</b><small>Transferencia</small></span></label>
-          <label class="paym"><input type="radio" name="method" value="cash"><span><b>Efectivo</b><small>En tienda</small></span></label>
+          <label class="paym"><input type="radio" name="method" value="store"><span><b>Efectivo</b><small>En tienda</small></span></label>
         </div>
-        <div class="paybox" data-method="card">
-          <label class="field"><span>Número de tarjeta</span><input inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="19" data-cc></label>
+
+        <!-- Tarjeta: los datos se tokenizan con OpenPay.js en el navegador; nunca llegan al servidor. -->
+        <div class="paybox" data-method="card" id="openpayCardForm">
+          <label class="field"><span>Nombre en la tarjeta</span><input autocomplete="cc-name" placeholder="Como aparece en la tarjeta" data-openpay-card="holder_name"></label>
+          <label class="field"><span>Número de tarjeta</span><input inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="19" data-cc data-openpay-card="card_number"></label>
           <div class="field-row">
             <label class="field"><span>Vencimiento</span><input autocomplete="cc-exp" placeholder="MM/AA" maxlength="5" data-exp></label>
-            <label class="field"><span>CVV</span><input inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="4"></label>
+            <label class="field"><span>CVV</span><input inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="4" data-openpay-card="cvv2"></label>
           </div>
+          <input type="hidden" id="deviceSessionId">
+          <p class="paysecure"><svg><use href="#i-shield"/></svg> Pago procesado por OpenPay. Tus datos de tarjeta no se guardan en TaquillApp.</p>
+        </div>
+        <div class="paybox" data-method="paypal" hidden>
+          <p class="paynote">Paga con tu saldo o tarjetas guardadas en PayPal. Al aprobar el pago, tus códigos se generan al instante.</p>
+          <div id="paypalButtons" class="paypal-slot"></div>
         </div>
         <div class="paybox" data-method="spei" hidden>
-          <p class="paynote">Al confirmar te mostramos una CLABE única. Tu código se envía en cuanto se refleje la transferencia.</p>
+          <p class="paynote">Al confirmar te damos una CLABE única para transferir desde tu banca en línea. Tus códigos se envían en cuanto se refleje el pago.</p>
         </div>
-        <div class="paybox" data-method="cash" hidden>
-          <p class="paynote">Generamos una referencia para pagar en tiendas de conveniencia. Tienes 48 horas para completar el pago.</p>
+        <div class="paybox" data-method="store" hidden>
+          <p class="paynote">Generamos una referencia para pagar en efectivo en tiendas de conveniencia participantes. Tus códigos se envían al confirmarse el pago.</p>
         </div>
+        <p class="co__error" id="coError" role="alert" hidden></p>
         <div class="co__actions">
           <button class="btn btn--ghost-dark" type="button" id="coBack">Atrás</button>
           <button class="btn btn--grad" type="submit" id="coPay">Pagar</button>
@@ -451,8 +462,8 @@
       </form>
 
       <div class="co__panel co__done" id="coStep3">
-        <div class="done__badge"><svg><use href="#i-check"/></svg></div>
-        <h3>¡Listo! Tus códigos van en camino.</h3>
+        <div class="done__badge" id="doneBadge"><svg><use href="#i-check"/></svg></div>
+        <h3 id="doneTitle">¡Listo! Tus códigos van en camino.</h3>
         <p id="doneMsg">Te los enviamos por correo.</p>
         <div class="done__codes" id="doneCodes"></div>
         <button class="btn btn--grad" data-close>Seguir comprando</button>
@@ -470,6 +481,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="js/data.js"></script>
+<script src="js/payments.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

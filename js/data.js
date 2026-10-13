@@ -1,4 +1,5 @@
-// Catálogo TaquillApp — precios "desde" en MXN.
+// Catálogo por defecto de TaquillApp — precios "desde" en MXN.
+// En WordPress el catálogo llega desde el plugin (window.TQ_CONFIG.products) y este archivo solo es respaldo.
 // type: boleto | combo | paquete · chain: cinepolis | cinemex
 const COMMON = [
   'Vigencia de 3 meses a partir de la fecha de compra.',
@@ -6,7 +7,7 @@ const COMMON = [
   'Sujeto a disponibilidad del complejo.',
 ];
 
-const PRODUCTS = [
+window.TQ_DEFAULT_PRODUCTS = [
   // ——— Boletos Cinemex
   { id: 'cmx-trad-lv', chain: 'cinemex', type: 'boleto', icon: 'ticket', name: 'Boleto Tradicional', days: 'Lunes a viernes', price: 61, tag: 'Más barato',
     desc: 'Tu entrada a cualquier función 2D en sala tradicional, entre semana.',
@@ -78,5 +79,5 @@ const PRODUCTS = [
     terms: ['Válido solo en salas VIP.', 'Combo canjeable en dulcería.'] },
 ].map(p => ({ ...p, terms: [...p.terms, ...COMMON] }));
 
-const CHAINS = { cinepolis: 'Cinépolis', cinemex: 'Cinemex' };
-const TYPES = { boleto: 'Boletos', combo: 'Combos', paquete: 'Paquetes' };
+window.TQ_CHAINS = { cinepolis: 'Cinépolis', cinemex: 'Cinemex' };
+window.TQ_TYPES = { boleto: 'Boletos', combo: 'Combos', paquete: 'Paquetes' };
